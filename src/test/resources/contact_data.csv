@@ -1,0 +1,4 @@
+name,email,subject,message,filePath,expectedResult,expectedMessage
+Lan,lan@example.com,Hello,Valid input,src/test/resources/uploads/valid_file.txt,pass,Success! Your details have been submitted successfully.
+InvalidEmail,invalid_email,Hello,This should fail,src/test/resources/uploads/valid_file.txt,fail,Invalid email format
+NoEmail,,Hello,Missing email,src/test/resources/uploads/valid_file.txt,fail,Email is required

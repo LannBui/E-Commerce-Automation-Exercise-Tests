@@ -1,0 +1,5 @@
+keyword,expectedToFind
+Jeans,true
+top,true
+Coat,false
+lan,false

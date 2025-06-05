@@ -1,0 +1,14 @@
+<suite name="CrossBrowserSuite">
+    <test name="ChromeTest">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="org.ecommerceautomationexercise.tests.SearchProductTest"/>
+        </classes>
+    </test>
+<!--    <test name="FirefoxTest">-->
+<!--        <parameter name="browser" value="firefox"/>-->
+<!--        <classes>-->
+<!--            <class name="org.ecommerceautomationexercise.tests.LoginUserTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>
