@@ -1,0 +1,4 @@
+email,expectedResult,expectedMessage
+test@example.com,success,You have been successfully subscribed!
+invalidemail,false,Invalid email format
+,fail,Email field is required
