@@ -1,0 +1,5 @@
+name,email,review,expectedResult
+Lan,lan@example.com,This product is awesome!,pass
+Alex,,Nice!,fail
+,alex@example.com,Useful,fail
+Jane,jane@example.com,,fail

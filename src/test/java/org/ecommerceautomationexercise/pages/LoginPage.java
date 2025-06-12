@@ -1,9 +1,6 @@
 package org.ecommerceautomationexercise.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,15 +25,17 @@ public class LoginPage {
     }
 
     public boolean isLoggedinUserAsDisplayed(String usernameLoggedin){
-        String xpath = "//a[contains(text(),'Logged in as " + usernameLoggedin + "')]";
-        return driver.findElement(By.xpath(xpath)).isDisplayed();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        String xpath = "//a[contains(.,'Logged in as') and .//b[text()='" + usernameLoggedin + "']]";
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+        return element.isDisplayed();
     }
     public boolean isErrorMessageDisplayed (){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='Your email or password is incorrect!']")));
         return message.isDisplayed();
     }
-    public void accountDeleted (){
+    public void deleteAccount(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement deleteBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()=' Delete Account']")));
         deleteBtn.click();

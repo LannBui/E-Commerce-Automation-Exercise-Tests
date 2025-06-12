@@ -1,16 +1,20 @@
 package org.ecommerceautomationexercise.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.testng.annotations.Parameters;
 
 
+import java.time.Duration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BaseTest {
@@ -44,6 +48,17 @@ public class BaseTest {
         }
 
         driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        dismissAds();
+    }
+    public void dismissAds() {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("let ad = document.getElementById('aswift_1_host'); if (ad) { ad.remove(); }");
+            js.executeScript("let iframes = document.getElementsByTagName('iframe'); for (let i = 0; i < iframes.length; i++) { iframes[i].style.display = 'none'; }");
+        } catch (Exception e) {
+            System.out.println("No ads to dismiss or already removed.");
+        }
     }
 
     @AfterMethod

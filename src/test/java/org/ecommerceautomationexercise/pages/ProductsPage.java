@@ -1,9 +1,7 @@
 package org.ecommerceautomationexercise.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.testng.Assert.*;
@@ -71,6 +69,78 @@ public class ProductsPage {
     public boolean areSearchedResultsVisible() {
         List<WebElement> products = driver.findElements(By.xpath("//div[@class='productinfo text-center']"));
         return products.size() > 0;
+    }
+
+    public void addFirstTwoProductsToCart() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        Actions actions = new Actions(driver);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        // Wait until product cards are present
+        List<WebElement> products = wait.until(ExpectedConditions
+                .presenceOfAllElementsLocatedBy(By.cssSelector(".product-image-wrapper")));
+
+        if (products.size() < 2) {
+            throw new RuntimeException("Less than 2 products found!");
+        }
+
+        for (int i = 0; i < 2; i++) {
+            WebElement product = products.get(i);
+
+            // Scroll and hover
+            js.executeScript("arguments[0].scrollIntoView(true);", product);
+            actions.moveToElement(product).perform();
+
+            // Get the 'Add to cart' button inside that product element
+            WebElement addToCartBtn = product.findElement(By.xpath(".//a[contains(text(),'Add to cart')]"));
+
+            // Use JavaScript to click to avoid ad overlay
+            js.executeScript("arguments[0].click();", addToCartBtn);
+
+            // If not the last item, click 'Continue Shopping'
+            if (i < 1) {
+                WebElement continueBtn = wait.until(ExpectedConditions
+                        .visibilityOfElementLocated(By.xpath("//button[text()='Continue Shopping']")));
+                continueBtn.click();
+            }
+        }
+    }
+    public void addFirstProductToCart() {
+        Actions actions = new Actions(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        // Wait for products to be visible
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".features_items")));
+
+        // Locate first product container
+        WebElement product = driver.findElement(By.xpath("(//div[@class='product-image-wrapper'])[1]"));
+
+        // Scroll to product and hover to make the button visible
+        js.executeScript("arguments[0].scrollIntoView(true);", product);
+
+        // Hover to reveal 'Add to cart'
+        actions.moveToElement(product).perform();
+
+        // Then click 'Add to cart' that becomes visible
+        WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("(//div[@class='product-image-wrapper'])[1]//a[contains(text(),'Add to cart')]")
+        ));
+        js.executeScript("arguments[0].click();", addToCartBtn);
+    }
+    public void goToCart () {
+//        driver.findElement(By.xpath("//u[text()='View Cart']")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement viewCart = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//u[text()='View Cart']/parent::a")
+        ));
+        viewCart.click();
+    }
+    public boolean areAllProductsDisplayed() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        List<WebElement> productList = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(".features_items .product-image-wrapper")));
+        return productList.size() > 0;
+
     }
 
 }

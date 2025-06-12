@@ -13,7 +13,7 @@ import static org.testng.Assert.*;
 
 public class SearchProductTest extends BaseTest {
 
-    @Test(dataProvider = "searchKeywords", dataProviderClass = utils.CSVReaderUtil.class)
+    @Test(dataProvider = "searchKeywords", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression"})
     public void testSearchFunctionality (String keyword, boolean expectedToFind){
         driver.get("https://automationexercise.com/");
 

@@ -15,7 +15,7 @@ public class LogoutUserTest extends BaseTest {
         home.goToSignup();
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("lan987@example.com","pass123"); //use existing account
+        loginPage.login("lan984@example.com","pass123"); //use existing account
         assertTrue(loginPage.isLoggedinUserAsDisplayed("LanBui1"), "User not logged in");
 
         loginPage.logout();

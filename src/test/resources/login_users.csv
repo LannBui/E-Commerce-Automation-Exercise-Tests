@@ -1,5 +1,5 @@
 name,email,password,expectedResult,expectedMessage
-,validuser@example.com,validpass,success,Logged in as
+,validusertest@example.com,validpass,success,Logged in as
 ,invaliduser@example.com,invalidpass,fail,Your email or password is incorrect!
 ,validuser@example.com,wrongpass,fail,Your email or password is incorrect!
 ,invaliduser@example.com,validpass,fail,Your email or password is incorrect!

@@ -11,7 +11,7 @@ import static org.testng.Assert.*;
 
 public class RegisterUserTest extends BaseTest {
 
-    @Test (dataProvider = "signupData", dataProviderClass = utils.CSVReaderUtil.class)
+    @Test (dataProvider = "signupData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"smoke", "sanity"})
     public void testRegisterUser(String name, String email, String password, String date
     , String month, String year, String fname, String lname, String company, String addr1
     ,String addr2, String country, String state, String city, String zip, String mobile
@@ -38,6 +38,7 @@ public class RegisterUserTest extends BaseTest {
         //Positive flow
         signup.fillAccountInfo(password, date, month, year);
         signup.fillAddressInfo(fname, lname, company, addr1, addr2, country, state, city, zip, mobile);
+        signup.submitForm();
         String actualMessage = signup.getResultMessage();
         assertTrue(actualMessage.contains(expectedMessage), "Expected: "+ expectedMessage +", but got: "+actualMessage);
 

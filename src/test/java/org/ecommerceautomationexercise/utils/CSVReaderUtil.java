@@ -77,4 +77,73 @@ public class CSVReaderUtil {
         br.close();
         return data.iterator();
     }
+
+    @DataProvider(name = "subscriptionData")
+    public static Iterator<Object[]> readSubscriptionData() throws Exception {
+        List<Object[]> data = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("src/test/resources/subscription_data.csv"));
+        String line;
+        br.readLine(); // skip header
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split(",", -1); // support empty string
+            data.add(new Object[]{ parts[0], parts[1], parts[2] });
+        }
+        br.close();
+        return data.iterator();
+    }
+    @DataProvider(name = "quantityData")
+    public static Iterator<Object[]> readQuantityData() throws Exception {
+        List<Object[]> data = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("src/test/resources/quantity_test_data.csv"));
+        String line;
+        br.readLine(); // skip header
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split(",", -1);
+            data.add(new Object[]{ parts[0], Boolean.parseBoolean(parts[1]) });
+        }
+        br.close();
+        return data.iterator();
+    }
+    @DataProvider(name = "searchCartLoginData")
+    public static Iterator<Object[]> readSearchCartLoginData() throws Exception {
+        List<Object[]> data = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("src/test/resources/search_login_data.csv"));
+        String line;
+        br.readLine(); // skip header
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split(",", -1);
+            data.add(new Object[]{parts[0], parts[1], parts[2]});
+        }
+        br.close();
+        return data.iterator();
+    }
+    @DataProvider(name = "reviewData")
+    public static Iterator<Object[]> getReviewData() throws Exception {
+        List<Object[]> data = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("src/test/resources/product_reviews.csv"));
+        String line;
+        br.readLine(); // Skip header
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split(",", -1);
+            data.add(new Object[]{parts[0], parts[1], parts[2], parts[3]});
+        }
+        br.close();
+        return data.iterator();
+    }
+    @DataProvider(name = "paymentData")
+    public static Iterator<Object[]> readPaymentData() throws Exception {
+        List<Object[]> data = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/payment_data.csv"));
+        String line;
+        reader.readLine(); // skip header
+
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(",", -1);
+            data.add(new Object[]{parts[0], parts[1], parts[2], parts[3], parts[4]});
+        }
+
+        reader.close();
+        return data.iterator();
+    }
+
 }

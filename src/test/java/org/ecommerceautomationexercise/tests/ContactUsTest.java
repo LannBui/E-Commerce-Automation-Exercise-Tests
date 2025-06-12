@@ -9,7 +9,7 @@ import static org.testng.Assert.*;
 
 public class ContactUsTest extends BaseTest {
 
-    @Test (dataProvider = "contactFormData", dataProviderClass = utils.CSVReaderUtil.class)
+    @Test (dataProvider = "contactFormData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"system"})
     public void testContactForm (String name, String email, String subject, String message, String filePath, String
                                  expectedResult, String expectedMessage){
         driver.get("https://automationexercise.com/");

@@ -1,5 +1,6 @@
 package org.ecommerceautomationexercise.pages;
 
+import org.ecommerceautomationexercise.utils.ElementUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,9 +15,12 @@ import java.util.NoSuchElementException;
 
 public class SignupPage {
     WebDriver driver;
+    ElementUtil util;
 
     public SignupPage(WebDriver driver){
+
         this.driver = driver;
+        this.util = new ElementUtil(driver); // Initialize helper
     }
 
     public void fillSignupForm (String name, String email){
@@ -60,7 +64,11 @@ public class SignupPage {
         driver.findElement(By.id("city")).sendKeys(city);
         driver.findElement(By.id("zipcode")).sendKeys(zipcode);
         driver.findElement(By.id("mobile_number")).sendKeys(mobile);
-        driver.findElement(By.xpath("//button[@data-qa='create-account']")).click();
+    }
+    public void submitForm() {
+        WebElement createAccountBtn = driver.findElement(By.xpath("//button[@data-qa='create-account']"));
+        util.scrollIntoView(createAccountBtn);
+        util.click(createAccountBtn); // Uses safe click with JS fallback
     }
 
     public void accountCreated (){
@@ -71,9 +79,8 @@ public class SignupPage {
     }
 
     public boolean isLoggedinUserAsDisplayed(String usernameLoggedin){
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        String xpath = "//a[contains(text(),'Logged in as " + usernameLoggedin + "')]";
+        String xpath = "//a[contains(.,'Logged in as') and .//b[text()='" + usernameLoggedin + "']]";
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
         return element.isDisplayed();
     }
