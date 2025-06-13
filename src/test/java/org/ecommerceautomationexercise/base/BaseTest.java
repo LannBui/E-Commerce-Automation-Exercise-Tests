@@ -21,7 +21,7 @@ public class BaseTest {
     protected WebDriver driver;
 
     @Parameters("browser")
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup(); // automatic
@@ -33,8 +33,9 @@ public class BaseTest {
             prefs.put("profile.password_manager_enabled", false);
             options.setExperimentalOption("prefs", prefs);
 
-            // Use incognito mode
+            // Use incognito mode and headless
             options.addArguments("--incognito");
+            options.addArguments("--headless=new");
 
             driver = new ChromeDriver(options);
 
@@ -49,16 +50,16 @@ public class BaseTest {
 
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        dismissAds();
-    }
-    public void dismissAds() {
-        try {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("let ad = document.getElementById('aswift_1_host'); if (ad) { ad.remove(); }");
-            js.executeScript("let iframes = document.getElementsByTagName('iframe'); for (let i = 0; i < iframes.length; i++) { iframes[i].style.display = 'none'; }");
-        } catch (Exception e) {
-            System.out.println("No ads to dismiss or already removed.");
-        }
+//        dismissAds();
+//    }
+//    public void dismissAds() {
+//        try {
+//            JavascriptExecutor js = (JavascriptExecutor) driver;
+//            js.executeScript("let ad = document.getElementById('aswift_1_host'); if (ad) { ad.remove(); }");
+//            js.executeScript("let iframes = document.getElementsByTagName('iframe'); for (let i = 0; i < iframes.length; i++) { iframes[i].style.display = 'none'; }");
+//        } catch (Exception e) {
+//            System.out.println("No ads to dismiss or already removed.");
+//        }
     }
 
     @AfterMethod

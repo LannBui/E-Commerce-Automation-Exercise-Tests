@@ -1,0 +1,25 @@
+<suite name="ParallelCrossBrowser" parallel="tests" thread-count="2">
+    <test name="ChromeTest">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="org.ecommerceautomationexercise.tests"/>
+        </packages>
+    </test>
+
+    <test name="FirefoxTest">
+        <parameter name="browser" value="firefox"/>
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="org.ecommerceautomationexercise.tests"/>
+        </packages>
+    </test>
+</suite>

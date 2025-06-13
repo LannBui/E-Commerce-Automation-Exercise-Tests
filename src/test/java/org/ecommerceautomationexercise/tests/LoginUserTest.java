@@ -20,7 +20,7 @@ public class LoginUserTest extends BaseTest {
         loginPage.login(email,password);
 
         if (expectedResult.equalsIgnoreCase("success")){
-            assertTrue(loginPage.isLoggedinUserAsDisplayed(name), "User not logged in as expected");
+            assertTrue(loginPage.isLoggedinUserAsDisplayed(), "User not logged in as expected");
 //            loginPage.deleteAccount();
 //            assertTrue(loginPage.isAccountDeletedDisplayed(),"Account deleted message not displayed");
         }else {

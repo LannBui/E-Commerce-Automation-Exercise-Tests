@@ -11,7 +11,7 @@ import static org.testng.Assert.*;
 
 public class RegisterUserTest extends BaseTest {
 
-    @Test (dataProvider = "signupData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"smoke", "sanity"})
+    @Test (dataProvider = "signupData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"smoke", "sanity", "regression"})
     public void testRegisterUser(String name, String email, String password, String date
     , String month, String year, String fname, String lname, String company, String addr1
     ,String addr2, String country, String state, String city, String zip, String mobile
@@ -22,6 +22,10 @@ public class RegisterUserTest extends BaseTest {
         home.goToSignup();
 
         SignupPage signup = new SignupPage(driver);
+
+        if (expectedResult.equalsIgnoreCase("pass") || email.equalsIgnoreCase("DYNAMIC")) {
+            email = "user" + System.currentTimeMillis() + "@testmail.com";
+        }
         signup.fillSignupForm(name, email);
 
         // Email already exists

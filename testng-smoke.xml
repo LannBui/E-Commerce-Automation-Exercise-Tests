@@ -1,8 +1,0 @@
-<suite name="SmokeSuite">
-    <test name="Chrome Smoke">
-        <parameter name="browser" value="chrome"/>
-        <packages>
-            <package name="org.ecommerceautomationexercise.tests.smoke"/>
-        </packages>
-    </test>
-</suite>

@@ -40,7 +40,6 @@ public class SignupPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password"))).sendKeys(password);
         new Select(driver.findElement(By.id("days"))).selectByVisibleText(day);
         new Select(driver.findElement(By.id("months"))).selectByVisibleText(month);

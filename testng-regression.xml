@@ -1,9 +1,0 @@
-<suite name="RegressionSuite">
-    <test name="Chrome Regression">
-        <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="org.ecommerceautomationexercise.tests.regression.AddToCartTest"/>
-            <class name="org.ecommerceautomationexercise.tests.regression.CheckoutTest"/>
-        </classes>
-    </test>
-</suite>

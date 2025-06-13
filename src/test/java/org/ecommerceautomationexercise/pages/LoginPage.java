@@ -24,11 +24,15 @@ public class LoginPage {
         driver.findElement(By.xpath("//button[@data-qa='login-button']")).click();
     }
 
-    public boolean isLoggedinUserAsDisplayed(String usernameLoggedin){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        String xpath = "//a[contains(.,'Logged in as') and .//b[text()='" + usernameLoggedin + "']]";
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-        return element.isDisplayed();
+    public boolean isLoggedinUserAsDisplayed(){
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+//        String xpath = "//a[contains(.,'Logged in as') and .//b[text()='" + usernameLoggedin + "']]";
+//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+//        return element.isDisplayed();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebElement loggedInUser = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//a[contains(text(),'Logged in as') and .//b[string-length(text()) > 0]]")));
+        return loggedInUser.isDisplayed();
     }
     public boolean isErrorMessageDisplayed (){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

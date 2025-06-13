@@ -1,6 +1,5 @@
 package org.ecommerceautomationexercise.tests;
 
-import org.ecommerceautomationexercise.base.BasePage;
 import org.ecommerceautomationexercise.base.BaseTest;
 import org.ecommerceautomationexercise.pages.CartPage;
 import org.ecommerceautomationexercise.pages.HomePage;

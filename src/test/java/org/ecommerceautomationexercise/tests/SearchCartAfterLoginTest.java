@@ -22,7 +22,6 @@ public class SearchCartAfterLoginTest extends BaseTest {
 
         productsPage.searchProduct(keyword);
         Assert.assertTrue(productsPage.isSearchProductsTitleVisible(), "Search product header not shown");
-//        Assert.assertTrue(productsPage.);
 
         productsPage.addFirstProductToCart();
         productsPage.goToCart();

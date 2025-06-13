@@ -21,7 +21,7 @@ public class ProductDetailPage {
 
     public void clickAddToCart () {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement addToCartBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Add to cart')]")));
+        WebElement addToCartBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.btn.btn-default.cart")));
         addToCartBtn.click();
     }
     public void viewCart () {

@@ -34,7 +34,14 @@ public class CheckoutPage {
     }
 
     public void confirmOrder() {
-        driver.findElement(By.xpath("//button[@data-qa='pay-button']")).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement confirmButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@data-qa='pay-button']")));
+        // Scroll into view to avoid ad overlap
+        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", confirmButton);
+        // Click via JavaScript to bypass overlapping iframe/ad
+        js.executeScript("arguments[0].click();", confirmButton);
     }
 
     public boolean isOrderSuccessVisible() {
