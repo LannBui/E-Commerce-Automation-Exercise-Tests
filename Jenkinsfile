@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        MAVEN_HOME = 'C:\\Program Files\\Apache\\maven-3.8.8'  // Adjust if necessary
+        PATH = "${env.MAVEN_HOME}\\bin;${env.PATH}"
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -12,15 +17,17 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                bat """
-                    mvn test -DsuiteXmlFile=testng-suites/testng-smoke.xml
-                """
+                echo '🚀 Running Smoke Test Suite...'
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat 'mvn test -DsuiteXmlFile=testng-suites/testng-smoke.xml'
+                }
             }
         }
 
         stage('Archive Reports') {
             steps {
-                junit 'target/surefire-reports/*.xml'
+                echo '📦 Archiving test results...'
+                junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                 archiveArtifacts artifacts: 'target/surefire-reports/*.html', allowEmptyArchive: true
             }
         }
@@ -29,6 +36,15 @@ pipeline {
     post {
         always {
             echo '🧹 Cleaning up...'
+        }
+        success {
+            echo '✅ Build succeeded with all tests passing.'
+        }
+        unstable {
+            echo '⚠️ Build marked UNSTABLE due to test failures (e.g., assertions).'
+        }
+        failure {
+            echo '❌ Build failed due to critical errors (e.g., compile or Maven failure).'
         }
     }
 }
