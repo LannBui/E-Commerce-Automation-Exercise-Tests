@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo '🚀 Running Smoke Test Suite...'
                 catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                    bat 'mvn test -DsuiteXmlFile=testng-suites/testng-smoke.xml'
+                    bat 'mvn test -DsuiteXmlFile=testng-suites/testng.xml'
                 }
             }
         }
