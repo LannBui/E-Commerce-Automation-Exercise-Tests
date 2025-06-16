@@ -40,11 +40,26 @@ public class SignupPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
+        // Wait and fill password
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password"))).sendKeys(password);
-        new Select(driver.findElement(By.id("days"))).selectByVisibleText(day);
-        new Select(driver.findElement(By.id("months"))).selectByVisibleText(month);
-        new Select(driver.findElement(By.id("years"))).selectByVisibleText(year);
 
+        // Handle dropdowns with JS scroll + Select
+        WebElement daysDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("days")));
+        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", daysDropdown);
+        js.executeScript("arguments[0].click();", daysDropdown);
+        new Select(daysDropdown).selectByVisibleText(day);
+
+        WebElement monthsDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("months")));
+        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", monthsDropdown);
+        js.executeScript("arguments[0].click();", monthsDropdown);
+        new Select(monthsDropdown).selectByVisibleText(month);
+
+        WebElement yearsDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("years")));
+        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", yearsDropdown);
+        js.executeScript("arguments[0].click();", yearsDropdown);
+        new Select(yearsDropdown).selectByVisibleText(year);
+
+        // Use JS to tick checkboxes to avoid iframe overlaps
         WebElement newsletterCheckbox = driver.findElement(By.id("newsletter"));
         js.executeScript("arguments[0].click();", newsletterCheckbox);
         WebElement optinCheckbox = driver.findElement(By.id("optin"));
