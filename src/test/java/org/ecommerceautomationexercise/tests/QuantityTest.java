@@ -1,5 +1,7 @@
 package org.ecommerceautomationexercise.tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.ecommerceautomationexercise.base.BaseTest;
 import org.ecommerceautomationexercise.pages.CartPage;
 import org.ecommerceautomationexercise.pages.HomePage;
