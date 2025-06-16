@@ -18,9 +18,17 @@ pipeline {
         stage('Build & Test') {
             steps {
                 echo '🚀 Running Specified TestNG Suite...'
-                        catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                            bat 'mvn clean test -DsuiteXmlFile=testng-suites/testng-smoke.xml'
-                            allure serve target/allure-results
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat 'mvn clean test -DsuiteXmlFile=testng-suites/testng-smoke.xml'
+                }
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                echo '📊 Generating Allure Report...'
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat 'allure generate target/allure-results --clean -o target/allure-report'
                 }
             }
         }
@@ -30,6 +38,7 @@ pipeline {
                 echo '📦 Archiving test results...'
                 junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                 archiveArtifacts artifacts: 'target/surefire-reports/*.html', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'target/allure-report/**/*.*', allowEmptyArchive: true
             }
         }
     }
