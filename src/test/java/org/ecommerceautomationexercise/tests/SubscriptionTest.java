@@ -1,5 +1,5 @@
 package org.ecommerceautomationexercise.tests;
-
+import org.testng.asserts.SoftAssert;
 import org.ecommerceautomationexercise.base.BaseTest;
 import org.ecommerceautomationexercise.pages.HomePage;
 import org.testng.annotations.Test;
