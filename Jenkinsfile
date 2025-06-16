@@ -29,7 +29,7 @@ pipeline {
                 echo '📦 Archiving test results...'
                 junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                 archiveArtifacts artifacts: 'target/surefire-reports/*.html', allowEmptyArchive: true
-                archiveArtifacts artifacts: 'target/allure-report/**/*.*', allowEmptyArchive: true
+
             }
         }
     }
