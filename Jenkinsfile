@@ -32,10 +32,6 @@ pipeline {
 
             }
         }
-        stage('End') {
-            steps {
-                echo '🏁 Pipeline complete.'
-            }
     }
 
     post {
