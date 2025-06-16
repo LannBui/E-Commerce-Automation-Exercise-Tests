@@ -21,12 +21,12 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
-            <!-- Allure plugin -->
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.11.2</version>
-            </plugin>
+<!--            &lt;!&ndash; Allure plugin &ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>io.qameta.allure</groupId>-->
+<!--                <artifactId>allure-maven</artifactId>-->
+<!--                <version>2.11.2</version>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
@@ -59,18 +59,18 @@
             <version>5.7.0</version>
         </dependency>
 
-        <!-- Allure TestNG integration -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.21.0</version>
-        </dependency>
-        <!-- Allure Annotations (for @Epic, @Feature, etc.) -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-java-commons</artifactId>
-            <version>2.21.0</version>
-        </dependency>
+<!--        &lt;!&ndash; Allure TestNG integration &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.qameta.allure</groupId>-->
+<!--            <artifactId>allure-testng</artifactId>-->
+<!--            <version>2.21.0</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; Allure Annotations (for @Epic, @Feature, etc.) &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>io.qameta.allure</groupId>-->
+<!--            <artifactId>allure-java-commons</artifactId>-->
+<!--            <version>2.21.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
 </project>

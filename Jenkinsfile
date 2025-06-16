@@ -24,15 +24,6 @@ pipeline {
             }
         }
 
-        stage('Generate Allure Report') {
-            steps {
-                echo '📊 Generating Allure Report...'
-                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                    bat 'allure generate target/allure-results --clean -o target/allure-report'
-                }
-            }
-        }
-
         stage('Archive Reports') {
             steps {
                 echo '📦 Archiving test results...'

@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class QuantityTest extends BaseTest {
-    @Epic("E-Commerce")
-    @Feature("Cart")
+//    @Epic("E-Commerce")
+//    @Feature("Cart")
     @Test (dataProvider = "quantityData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression"})
     public void testQuantityInCart (String quantity, boolean shouldSucceed) {
         driver.get("https://automationexercise.com");
