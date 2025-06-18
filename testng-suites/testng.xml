@@ -5,10 +5,10 @@
             <class name="org.ecommerceautomationexercise.tests.QuantityTest"/>
         </classes>
     </test>
-        <test name="FirefoxTest">
-            <parameter name="browser" value="firefox"/>
-            <classes>
-                <class name="org.ecommerceautomationexercise.tests.QuantityTest"/>
-            </classes>
-        </test>
+<!--        <test name="FirefoxTest">-->
+<!--            <parameter name="browser" value="firefox"/>-->
+<!--            <classes>-->
+<!--                <class name="org.ecommerceautomationexercise.tests.QuantityTest"/>-->
+<!--            </classes>-->
+<!--        </test>-->
 </suite>

@@ -65,7 +65,17 @@ public class ProductDetailPage {
             return "No message found.";
         }
     }
-
+    public boolean isRedirectToCart() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            return wait.until(ExpectedConditions.or(
+                    ExpectedConditions.urlContains("view_cart"),
+                    ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[text()='Shopping Cart']"))
+            )) != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
 
 }

@@ -122,6 +122,17 @@ public class HomePage {
                 By.id("scrollUp"))); // Assuming ID is scrollUp, verify with devtools
         arrow.click();
     }
+    public boolean isStillOnProductPage() {
+        try {
+            // Check for a unique element that only exists on the product detail page
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement productHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//div[@class='product-information']//h2")));
+            return productHeader.isDisplayed();
+        } catch (Exception e) {
+            return false; // likely redirected somewhere else
+        }
+    }
 
 
 
