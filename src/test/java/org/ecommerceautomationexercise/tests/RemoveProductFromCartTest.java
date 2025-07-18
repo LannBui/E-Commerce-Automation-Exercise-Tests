@@ -9,7 +9,7 @@ import static org.testng.Assert.*;
 
 public class RemoveProductFromCartTest extends BaseTest {
 
-    @Test(groups = {"regression"})
+    @Test(groups = {"regression", "full"}, priority = 1)
     public void testRemoveProductFromCart() {
         driver.get("https://automationexercise.com/");
 

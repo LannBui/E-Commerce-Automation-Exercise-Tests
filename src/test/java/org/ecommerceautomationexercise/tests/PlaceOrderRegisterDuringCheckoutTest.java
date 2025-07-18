@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class PlaceOrderRegisterDuringCheckoutTest extends BaseTest {
-    @Test (groups = {"integration"})
+    @Test (groups = {"integration", "full"}, priority = 1)
     public void testPlaceOrderLoginBeforeCheckout() {
         driver.get("https://automationexercise.com");
         HomePage home = new HomePage(driver);

@@ -9,7 +9,7 @@ import java.security.Signature;
 
 public class DownloadInvoiceTest extends BaseTest {
 
-    @Test (groups = {"system"})
+    @Test (groups = {"system", "full"}, priority = 1)
     public void testDownloadInvoiceAfterPurchaseOrder () {
         driver.get("https://automationexercise.com/");
 

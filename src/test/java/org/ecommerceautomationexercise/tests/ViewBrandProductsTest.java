@@ -8,7 +8,7 @@ import static org.testng.Assert.*;
 
 
 public class ViewBrandProductsTest extends BaseTest {
-    @Test (groups = {"system"})
+    @Test (groups = {"system", "full"}, priority = 1)
     public void testViewAndSwitchBrandProducts() {
         driver.get("https://automationexercise.com/");
         HomePage homePage = new HomePage(driver);

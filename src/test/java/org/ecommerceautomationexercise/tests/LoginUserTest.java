@@ -10,7 +10,7 @@ import static org.testng.Assert.*;
 public class LoginUserTest extends BaseTest {
 
     @Test (dataProvider = "loginData", dataProviderClass = utils.CSVReaderUtil.class,
-            groups = {"smoke", "sanity"})
+            groups = {"smoke", "sanity", "full"}, priority = 1)
     public void testLoginUser(String name, String email, String password, String expectedResult, String expectedMessage){
         driver.get("https://automationexercise.com/");
         HomePage home = new HomePage(driver);

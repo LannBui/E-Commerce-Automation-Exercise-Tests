@@ -11,7 +11,7 @@ import static org.testng.Assert.*;
 
 public class RegisterUserTest extends BaseTest {
 
-    @Test (dataProvider = "signupData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"smoke", "sanity", "regression"})
+    @Test (dataProvider = "signupData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"smoke", "sanity", "regression", "full"}, priority = 1)
     public void testRegisterUser(String name, String email, String password, String date
     , String month, String year, String fname, String lname, String company, String addr1
     ,String addr2, String country, String state, String city, String zip, String mobile

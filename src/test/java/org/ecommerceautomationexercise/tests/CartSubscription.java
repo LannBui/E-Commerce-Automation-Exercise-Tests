@@ -9,7 +9,7 @@ import static org.testng.Assert.*;
 
 public class CartSubscription extends BaseTest {
 
-    @Test (dataProvider = "subscriptionData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression"})
+    @Test (dataProvider = "subscriptionData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression", "full"}, priority = 1)
 
     public void testSubscriptionCartPage(String email, String expectedResult, String expectedMessage) {
         driver.get("https://automationexercise.com");

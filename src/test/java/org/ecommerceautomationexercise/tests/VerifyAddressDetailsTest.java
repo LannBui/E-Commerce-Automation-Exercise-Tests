@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class VerifyAddressDetailsTest extends BaseTest {
-    @Test (groups = {"integration"})
+    @Test (groups = {"integration", "full"}, priority = 1)
     public void testVerifyAddressDetailsInCheckoutPage() {
         driver.get("https://automationexercise.com");
 

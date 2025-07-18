@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class ScrollWithoutArrowTest extends BaseTest {
 
-    @Test (groups = {"system"})
+    @Test (groups = {"system", "full"}, priority = 1)
     public void testScrollUpWithoutArrow() {
         driver.get("https://automationexercise.com");
         HomePage homePage = new HomePage(driver);

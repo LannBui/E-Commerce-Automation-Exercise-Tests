@@ -11,7 +11,7 @@ import org.testng.asserts.SoftAssert;
 
 public class QuantityTest extends BaseTest {
 
-    @Test (dataProvider = "quantityData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression", "smoke"})
+    @Test (dataProvider = "quantityData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression", "smoke", "full"}, priority = 1)
     public void testQuantityInCart (String quantity, boolean shouldSucceed) {
         driver.get("https://automationexercise.com");
         HomePage home = new HomePage(driver);

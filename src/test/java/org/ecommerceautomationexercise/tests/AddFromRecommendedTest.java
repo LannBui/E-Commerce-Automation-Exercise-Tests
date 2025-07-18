@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AddFromRecommendedTest extends BaseTest {
-    @Test (groups = {"regression", "integration"})
+    @Test (groups = {"regression", "integration", "full"}, priority = 1)
     public void testAddRecommendedProductToCart() {
         driver.get("https://automationexercise.com");
 

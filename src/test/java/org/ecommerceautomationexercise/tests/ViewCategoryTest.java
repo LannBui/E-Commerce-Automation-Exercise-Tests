@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ViewCategoryTest extends BaseTest {
-    @Test (groups = {"system"})
+    @Test (groups = {"system", "full"}, priority = 1)
     public void testViewCategoryProducts() {
         driver.get("https://automationexercise.com/");
         HomePage homePage = new HomePage(driver);

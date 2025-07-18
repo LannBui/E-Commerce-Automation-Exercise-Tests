@@ -12,7 +12,7 @@ import static org.testng.Assert.*;
 
 public class AddProductsToCartTest extends BaseTest {
 
-    @Test (groups = {"regression"})
+    @Test (groups = {"regression", "full"}, priority = 1)
     public void testAddTwoProductsToCart() {
         driver.get("https://automationexercise.com");
 

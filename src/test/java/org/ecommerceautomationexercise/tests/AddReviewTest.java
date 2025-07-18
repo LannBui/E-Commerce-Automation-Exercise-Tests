@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AddReviewTest extends BaseTest {
-    @Test (dataProvider = "reviewData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression"})
+    @Test (dataProvider = "reviewData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression", "full"}, priority = 1)
     public void testAddReviewToProduct(String name, String email, String review, String expectedResult) {
         driver.get("https://automationexercise.com");
         HomePage homePage = new HomePage(driver);

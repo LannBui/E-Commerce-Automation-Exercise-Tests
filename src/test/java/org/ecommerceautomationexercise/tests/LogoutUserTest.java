@@ -8,7 +8,7 @@ import static org.testng.Assert.assertTrue;
 
 
 public class LogoutUserTest extends BaseTest {
-    @Test
+    @Test(groups = {"full"}, priority = 1)
     public void testLogoutUser(){
         driver.get("https://automationexercise.com/");
         HomePage home = new HomePage(driver);

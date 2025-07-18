@@ -7,7 +7,7 @@ import static org.testng.Assert.*;
 import org.ecommerceautomationexercise.base.BaseTest;
 
 public class PlaceOrderLoginBeforeCheckoutTest extends BaseTest {
-    @Test (groups = {"integration"})
+    @Test (groups = {"integration", "full"}, priority = 1)
     public void testPlaceOrderRegisterDuringCheckout() {
         driver.get("https://automationexercise.com");
         HomePage home = new HomePage(driver);

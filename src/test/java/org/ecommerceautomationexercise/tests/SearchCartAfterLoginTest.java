@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class SearchCartAfterLoginTest extends BaseTest {
 
-    @Test (dataProvider = "searchCartLoginData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"integration"})
+    @Test (dataProvider = "searchCartLoginData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"integration", "full"}, priority = 1)
     public void testSearchCartAfterLogin (String keyword, String email, String password) {
         driver.get("https://automationexercise.com");
         HomePage homePage = new HomePage(driver);

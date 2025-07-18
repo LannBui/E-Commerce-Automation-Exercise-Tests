@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ScrollArrowTest extends BaseTest {
-    @Test (groups = {"system"})
+    @Test (groups = {"system", "full"}, priority = 1)
     public void testScrollArrowTest() {
         driver.get("https://automationexercise.com");
         HomePage homePage = new HomePage(driver);

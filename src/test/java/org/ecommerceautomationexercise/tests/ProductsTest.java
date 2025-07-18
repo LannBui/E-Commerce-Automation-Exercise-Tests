@@ -9,7 +9,7 @@ import static org.testng.Assert.*;
 
 public class ProductsTest extends BaseTest {
 
-    @Test (groups = {"smoke", "sanity"})
+    @Test (groups = {"smoke", "sanity", "full"}, priority = 1)
     public void testProductDetailVisibility (){
         driver.get("https://automationexercise.com");
 

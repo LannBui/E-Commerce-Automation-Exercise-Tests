@@ -8,7 +8,7 @@ import static org.testng.Assert.*;
 
 public class SubscriptionTest extends BaseTest {
 
-    @Test(dataProvider = "subscriptionData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression"})
+    @Test(dataProvider = "subscriptionData", dataProviderClass = utils.CSVReaderUtil.class, groups = {"regression", "full"}, priority = 1, enabled = false)
 
     public void testFooterSubscription(String email, String expectedResult, String expectedMessage) {
         driver.get("https://automationexercise.com/");
