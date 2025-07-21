@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo '🚀 Running Specified TestNG Suite...'
                 catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                    bat 'mvn clean test -DsuiteXmlFile=testng-suites/testng.xml'
+                    bat 'mvn clean test -DsuiteXmlFile=testng-suites/testng-full.xml'
                 }
             }
         }
